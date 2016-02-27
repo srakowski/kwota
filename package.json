@@ -1,0 +1,19 @@
+{
+  "name": "kwota",
+  "version": "0.0.1",
+  "description": "the source code for kwota.io",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/srakowski/kwota.git"
+  },
+  "author": "Shawn Rakowski",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/srakowski/kwota/issues"
+  },
+  "homepage": "https://github.com/srakowski/kwota#readme"
+}
