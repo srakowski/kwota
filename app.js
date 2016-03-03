@@ -33,6 +33,11 @@ var auth = function(req, res, next) {
     } 
 };
 
+app.get('*', function(req, res, next) {
+  res.locals.loggedIn = (req.user) ? true : false;
+  next();
+});
+
 app.use('/', routes);
 app.use('/systems', auth, systems);
 

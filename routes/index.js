@@ -21,9 +21,10 @@ router.post("/signup", function (req, res, next) {
         if (err) {
             console.log('error while user register!', err);
             return next(err);
-        }        
-        console.log('user sign up successful!');
-        res.redirect('/');        
+        }      
+        passport.authenticate('local')(req, res, function () {
+          res.redirect('/');
+        });        
     });
 });
 
