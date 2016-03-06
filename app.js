@@ -9,6 +9,7 @@ var User = require('./models/user');
 var mongoose = require('mongoose');
 
 var routes = require('./routes/index');
+var systems = require('./routes/systems');
 
 var app = express();
 
@@ -23,7 +24,17 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(session({ secret: 'ermahgerd'}));
 app.use(passport.initialize());
 app.use(passport.session());
+
+var auth = function(req, res, next) { 
+    if (!req.isAuthenticated()) { 
+        res.redirect("/signin");
+    } else {
+        next();
+    } 
+};
+
 app.use('/', routes);
+app.use('/systems', auth, systems);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -4,8 +4,8 @@ var router = express.Router();
 var User = require("../models/user");
 
 router.get('/', function(req, res, next) {
-    if (req.user) {
-        res.render('dashboard', {});
+    if (req.isAuthenticated()) {
+        res.render('home', {});
     } else {
         res.render('index', {});
     }
@@ -36,9 +36,11 @@ router.post("/signin", passport.authenticate('local', {
     failureRedirect: '/signin' 
 }));
 
-router.get("/signout", function (req, res) {
-    req.logout();
-    res.redirect('/');
-});
+router.get("/signout", 
+    passport.authorize('local', { failureRedirect: '/signin' }), 
+    function (req, res) {    
+        req.logout();
+        res.redirect('/');
+    });
 
 module.exports = router;

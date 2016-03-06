@@ -1,0 +1,10 @@
+extends ../layout
+
+block content
+    div.container
+        h1 My Systems
+        ul
+            for system in systems
+                li
+                    a(href="/systems/" + system._id)=system.name
+            
