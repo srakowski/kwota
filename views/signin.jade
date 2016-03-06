@@ -1,0 +1,17 @@
+extends layout
+
+block content
+    div.container
+        h1 Kwota.io | Sign in
+        form(action="/signin", method="post")
+            div.form-group
+                label(for="email") Email            
+                input#email.form-control(type="text", name="email")
+            div.form-group
+                label(for="password") Password            
+                input#password.form-control(type="password", name="password")
+            br
+            button.btn.btn-default(type="submit") Sign in
+            br
+            small or 
+            a(href="/signup") Sign up for free
