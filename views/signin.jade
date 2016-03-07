@@ -1,17 +1,24 @@
 extends layout
 
+block links
+    link(rel='stylesheet', href='/css/auth.css')    
+    
 block content
-    div.container
-        h1 Kwota.io | Sign in
-        form(action="/signin", method="post")
-            div.form-group
-                label(for="email") Email            
-                input#email.form-control(type="text", name="email")
-            div.form-group
-                label(for="password") Password            
-                input#password.form-control(type="password", name="password")
-            br
-            button.btn.btn-default(type="submit") Sign in
-            br
-            small or 
-            a(href="/signup") Sign up for free
+    div#kw-page-title Kwota.io | Sign in
+    div#kw-form-host
+        div#kw-form-box
+            div#kw-form-title Sign in with an existing account.        
+            form(action="/signin", method="post")
+                div.form-group
+                    label(for="email") Email            
+                    input#email.form-control(type="text", name="email")
+                div.form-group
+                    label(for="password") Password            
+                    input#password.form-control(type="password", name="password")
+                button.btn.btn-default(type="submit") Sign in
+            div#kw-or-section
+                small or 
+                a(href="/signup") Sign up for free
+        br
+        a(href="/") &#171; Home                
+        

@@ -1,10 +1,17 @@
 extends layout
 
-block content
-    div.container
-        h1 Kwota.io
-        div                    
-            button.btn.btn-primary(onclick="window.location='/signup'") Sign up for free
+block links
+    link(rel='stylesheet', href='/css/index.css')    
+    
+block content    
+    div#kw-title-section          
+        div#kw-title Welcome to Kwota.io
+        div#kw-subtitle
+            | Make significant, positive changes in your life
             br
+            | using the power of micro-quotas.
+        div#kw-signup                                           
+            button.btn.btn-primary#kw-signup-btn(onclick="window.location='/signup'") Sign up for free
+        div#kw-signin
             small or 
             a(href="/signin") Sign in

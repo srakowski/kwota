@@ -1,0 +1,43 @@
+#kw-page-title {
+    text-align: center;
+    font-size: 24px;   
+}
+
+#kw-form-host {
+    text-align: center;
+    margin-top: 24px;    
+}
+
+#kw-form-box a, 
+#kw-form-box a:link, 
+#kw-form-box a:hover, 
+#kw-form-box a:active, 
+#kw-form-box a:visited {
+    color: #FAFAFA;
+}
+
+#kw-form-title {
+    margin: 15px 0px;
+    font-size: 18px;
+}
+
+#kw-form-box {
+    text-align: left;
+    background-color: #337ab7;
+    color: #FAFAFA;
+    padding: 12px 24px;
+    width: 100%;
+    max-width: 328px;     
+    border-radius: 12px;  
+    box-shadow: 0 5px 20px #455059;
+    margin: 0 auto;
+}
+
+#kw-or-section {
+    margin: 15px 0px;        
+}
+
+input[type="text"], input[type="password"] {
+    width: 100%;
+    max-width: 300px;        
+} 

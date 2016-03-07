@@ -1,5 +1,9 @@
 body {
-    background-color: #EEE;
-    color: #333;    
+    background-color: #FAFAFA;
+    color: #555;    
     font-family: 'Open Sans', sans-serif;
+}
+
+.container {
+    padding-top: 100px;
 }

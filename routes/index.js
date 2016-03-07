@@ -36,11 +36,11 @@ router.post("/signin", passport.authenticate('local', {
     failureRedirect: '/signin' 
 }));
 
-router.get("/signout", 
-    passport.authorize('local', { failureRedirect: '/signin' }), 
+router.get("/signout",
     function (req, res) {    
         req.logout();
         res.redirect('/');
-    });
+    }
+);
 
 module.exports = router;

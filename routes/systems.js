@@ -34,4 +34,13 @@ router.post("/create",
     }
 );
 
+router.get("/:id", function (req, res, next) {
+    System.findOne({ _id: req.params.id }, function (err, system) {
+        if (err) {
+            return next(err);
+        }        
+        res.render("systems/system", system);        
+    });        
+});
+
 module.exports = router;

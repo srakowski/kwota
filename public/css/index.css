@@ -1,0 +1,23 @@
+#kw-title-section {
+    text-align: center;
+}
+
+#kw-title {
+    font-size: 75px;
+}
+
+#kw-subtitle {
+    font-size: 24px;
+}
+
+#kw-signup {
+    margin-top: 24px;
+}
+
+#kw-signup-btn {
+    min-width: 200px;
+}
+
+#kw-signin {
+    margin-top: 12px;
+}
