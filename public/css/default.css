@@ -2,8 +2,9 @@ body {
     background-color: #FAFAFA;
     color: #555;    
     font-family: 'Open Sans', sans-serif;
+    padding-top: 50px;
 }
 
-.container {
-    padding-top: 100px;
+.content {
+    padding: 12px 0px;   
 }

@@ -1,19 +1,21 @@
 extends layout
 
 block content
-    div.col-lg-2
-        ul
-            for system in systems
+    div.row
+        div.col-lg-3.col-md-4
+            ul.nav.nav-pills.nav-stacked
                 li
-                    a(href="/?system=" + system._id)=system.name
+                    a(href="/") All Systems
+                for system in systems
+                    li
+                        a(href="/?system=" + system._id)=system.name
 
-            li
-                a(href="/") All Systems
-            li
-                a(href="/systems/create") Create System            
-            li
-                a(href="/systems") Manage Systems
-    div.col-lg-10
-        for quota in quotas
+                li
+                    a(href="/systems/create") Create System            
+                li
+                    a(href="/systems") Manage Systems
+        div.col-lg-9.col-md-8
             div.col-lg-12
-                p I must #{quota.action} at least #{quota.instances} time(s) every #{quota.periodMultiplier} #{quota.timeFrame}(s)
+                ul.list-group
+                for quota in quotas                                    
+                    li.list-group-item I must #{quota.action} at least #{quota.instances} time(s) every #{quota.periodMultiplier} #{quota.timeFrame}(s)

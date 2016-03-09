@@ -7,9 +7,17 @@ html
     link(rel='stylesheet', href='/css/default.css')
     block links    
   body
-    - if (loggedIn) {
-    a(href="/signout") Sign out
-    - }
-    div.container
-        block content
+    div.container  
+        - if (loggedIn) {
+        nav.navbar.navbar-default.navbar-fixed-top
+            div.container
+                div.navbar-header
+                    a.navbar-brand(href="/") Kwota
+                div.navbar-collapse.collapse
+                    ul.nav.navbar-nav.navbar-right
+                        li
+                            a(href="/signout") Sign out
+        - }    
+        div.content
+            block content
     script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js')
