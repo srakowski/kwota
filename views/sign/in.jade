@@ -1,4 +1,4 @@
-extends layout
+extends ../layout
 
 block links
     link(rel='stylesheet', href='/css/auth.css')    
@@ -7,8 +7,14 @@ block content
     div#kw-page-title Kwota.io | Sign in
     div#kw-form-host
         div#kw-form-box
-            div#kw-form-title Sign in with an existing account.        
-            form(action="/signin", method="post")
+            div#kw-form-title Sign in with an existing account.
+            - if (error != null) {
+                div.alert.alert-error.alert-dismissible(role="alert")
+                    button.close(type="button", data-dismiss="alert", aria-label="Close")
+                        span(aria-hidden="true") &times;
+                    | ${error}
+            - }        
+            form(action="/sign/in", method="post")
                 div.form-group
                     label(for="email") Email            
                     input#email.form-control(type="text", name="email")

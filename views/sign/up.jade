@@ -1,4 +1,4 @@
-extends layout
+extends ../layout
 
 block links
     link(rel='stylesheet', href='/css/auth.css')    
@@ -8,16 +8,22 @@ block content
     div#kw-form-host
         div#kw-form-box
             div#kw-form-title Create a new account.
-            form(action="/signup", method="post")
+            - if (typeof error != "undefined") {
+                div.alert.alert-danger.alert-dismissible(role="alert")
+                    button.close(type="button", data-dismiss="alert", aria-label="Close")
+                        span(aria-hidden="true") &times;
+                    | #{error}
+            - }                    
+            form(action="/sign/up", method="post")
                 div.form-group
                     label(for="email") Email            
-                    input#email.form-control(type="text", name="email", placeholder="e.g. herp@derp.com")
+                    input#email.form-control(type="text", name="email", placeholder="e.g. success@kwota.io")
                 div.form-group
                     label(for="password") Password            
                     input#password.form-control(type="password", name="password", placeholder="e.g. ********")                            
                 button.btn.btn-default(type="submit") Sign up for free                
             div#kw-or-section
                 small or 
-                a(href="/signin") Sign in
+                a(href="/sign/in") Sign in
         br
         a(href="/") &#171; Home

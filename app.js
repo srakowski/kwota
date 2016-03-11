@@ -9,6 +9,7 @@ var User = require('./models/user');
 var mongoose = require('mongoose');
 
 var routes = require('./routes/index');
+var sign = require('./routes/sign');
 var systems = require('./routes/systems');
 var quotas = require('./routes/quotas');
 
@@ -40,6 +41,7 @@ app.get('*', function(req, res, next) {
 });
 
 app.use('/', routes);
+app.use('/sign', sign);
 app.use('/systems', auth, systems);
 app.use('/quotas', auth, quotas);
 
