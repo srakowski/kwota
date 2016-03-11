@@ -10,6 +10,7 @@ var mongoose = require('mongoose');
 
 var routes = require('./routes/index');
 var systems = require('./routes/systems');
+var quotas = require('./routes/quotas');
 
 var app = express();
 
@@ -40,6 +41,7 @@ app.get('*', function(req, res, next) {
 
 app.use('/', routes);
 app.use('/systems', auth, systems);
+app.use('/quotas', auth, quotas);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

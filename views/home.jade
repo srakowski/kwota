@@ -15,9 +15,12 @@ block content
                     li
                         a(href="/systems/create") Create System            
                     li
-                        a(href="/systems") Manage Systems                
+                        a(href="/systems") Manage Systems
+                    li                
+                        a(href="/quotas/create") Create Quota
         div.col-lg-9.col-md-8
             div.col-lg-12
-                ul.list-group
-                for quota in quotas                                    
-                    li.list-group-item I must #{quota.action} at least #{quota.instances} time(s) every #{quota.periodMultiplier} #{quota.timeFrame}(s)
+                div.panel.panel-default
+                    ul.list-group
+                    for quota in quotas                                    
+                        li.list-group-item I must #{quota.action} at least #{quota.instances} time(s) every #{quota.periodMultiplier} #{quota.timeFrame}(s)
