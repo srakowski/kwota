@@ -8,23 +8,23 @@ block content
     div#kw-form-host
         div#kw-form-box
             div#kw-form-title Sign in with an existing account.
-            - if (error != null) {
-                div.alert.alert-error.alert-dismissible(role="alert")
+            - if (typeof error != "undefined") {
+                div.alert.alert-danger.alert-dismissible(role="alert")
                     button.close(type="button", data-dismiss="alert", aria-label="Close")
                         span(aria-hidden="true") &times;
-                    | ${error}
+                    | #{error}
             - }        
             form(action="/sign/in", method="post")
                 div.form-group
                     label(for="email") Email            
-                    input#email.form-control(type="text", name="email")
+                    input#email.form-control(type="text", name="email", placeholder="e.g. success@kwota.io")
                 div.form-group
                     label(for="password") Password            
-                    input#password.form-control(type="password", name="password")
+                    input#password.form-control(type="password", name="password", placeholder="e.g. ********")
                 button.btn.btn-default(type="submit") Sign in
             div#kw-or-section
                 small or 
-                a(href="/signup") Sign up for free
+                a(href="/sign/up") Sign up for free
         br
         a(href="/") &#171; Home                
         
