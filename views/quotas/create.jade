@@ -1,31 +1,39 @@
 extends ../layout
 
 block content
-    div.container
-        h1 Create Quota
-        form(action="/quotas/create", method="post").form-inline
-            | As part of my
-            br
-            select.form-control(name="systemId")
-                for system in systems
-                    option(value="#{system._id}")=system.name
-            br                                        
-            | system, I must
-            br
-            textarea.form-control(name="action")
-            br
-            | at least
-            br
-            input.form-control(type="number", name="quantity")
-            br
-            | time(s) every
-            br
-            input.form-control(type="number", name="periodMultiplier", value="1")
-            select.form-control(name="timeFrame")
-                option(value="day") day(s)
-                option(value="week") week(s)
-                option(value="month") month(s)
-                option(value="year") year(s)            
-            br
-            br
-            button(type="submit").btn.btn-primary Create
+    div.row
+        div.col-lg-3.col-md-4  
+            ul.nav.nav-pills.nav-stacked
+                li
+                    a(href='/') My quotas
+                li.active
+                    a(href='/quotas/create') Create a new quota
+                li
+                    a(href='/systems') My systems                    
+                li
+                    a(href='/systems/create') Create a new system
+        div.col-lg-9.col-md-8             
+            div.panel.panel-default        
+                div.panel-heading Create Quota
+                div.panel-body
+                    form(action="/quotas/create", method="post")
+                        div.form-group
+                            label As part of my                        
+                            select.form-control(name="systemId")
+                                for system in systems
+                                    option(value="#{system._id}") #{system.purpose} System
+                        div.form-group
+                            label I must
+                            textarea.form-control(name="action")
+                        div.form-group
+                            label at least                        
+                            input.form-control(type="number", name="quantity")
+                        div.form-group
+                            label time(s) every                                    
+                            select.form-control(name="timeFrame")
+                                option(value="day") day
+                                option(value="week") week
+                                option(value="month") month
+                                option(value="year") year            
+                        br
+                        button(type="submit").btn.btn-primary Create

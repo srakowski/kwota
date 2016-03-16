@@ -22,7 +22,6 @@ router.post("/create",
     function (req, res, next) {
         (new System({
             _owner: req.user._id,
-            name: req.body.name,
             purpose: req.body.purpose            
         })).save(function (err, newSystem) {
             if (err) {

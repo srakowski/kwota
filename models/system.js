@@ -3,8 +3,7 @@ var ObjectId = mongoose.Schema.Types.ObjectId;
 
 var SystemSchema = new mongoose.Schema({
     _owner: { type: ObjectId, ref: 'User' },
-    name: { type: String, required: true },
-    purpose: String,
+    purpose: { type: String, required: true },
     quotas: [{ type: ObjectId, ref: 'Quota' }]
 });
 
