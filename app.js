@@ -12,6 +12,7 @@ var routes = require('./routes/index');
 var sign = require('./routes/sign');
 var systems = require('./routes/systems');
 var quotas = require('./routes/quotas');
+var apiQuota = require('./api/quota');
 
 var app = express();
 
@@ -44,6 +45,7 @@ app.use('/', routes);
 app.use('/sign', sign);
 app.use('/systems', auth, systems);
 app.use('/quotas', auth, quotas);
+app.use('/api/quota', auth, apiQuota);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -58,7 +60,9 @@ passport.deserializeUser(User.deserializeUser());
 
 mongoose.connect('mongodb://localhost/kwota_dev', function(err) {
   if (err) {
-    console.log('Could not connect to mongodb on localhost. Ensure that you have mongodb running on localhost and mongodb accepts connections on standard ports!');
+      console.log('Could not connect to mongodb on localhost. Ensure that you have mongodb running on localhost and mongodb accepts connections on standard ports!');
+  } else {
+      console.log('Connected to mongodb');
   }
 });
 

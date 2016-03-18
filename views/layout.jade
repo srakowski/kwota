@@ -7,18 +7,9 @@ html
     link(rel='stylesheet', href='/css/default.css')
     block links    
   body
-    div.container  
-        - if (loggedIn) {
-        nav.navbar.navbar-default.navbar-fixed-top
-            div.container
-                div.navbar-header
-                    a.navbar-brand(href="/") Kwota
-                div.navbar-collapse.collapse
-                    ul.nav.navbar-nav.navbar-right
-                        li
-                            a(href="/sign/out") Sign out
-        - }    
-        div.content
-            block content
+    div.container
+        block content
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js')
     script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js')
+    script(src='http://kendo.cdn.telerik.com/2014.2.716/js/kendo.ui.core.min.js')
+    block scripts

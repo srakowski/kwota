@@ -1,0 +1,19 @@
+<script>
+    
+    kwota.viewModels.QuotasViewModel = function () {
+        var QuotaViewModel = kwota.viewModels.QuotaViewModel;                
+        return kendo.observable({            
+            openQuotas: [],
+            filledQuotas: [],
+            initialize: function () {
+                var self = this;
+                $.get("/api/quota", function (quotas) {
+                    quotas.forEach(function (quota) {
+                        self.openQuotas.push(QuotaViewModel(quota));                        
+                    })
+                });                
+            }
+        });                                                             
+    };        
+    
+</script>
