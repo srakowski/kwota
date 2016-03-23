@@ -10,10 +10,7 @@ var mongoose = require('mongoose');
 
 var routes = require('./routes/index');
 var sign = require('./routes/sign');
-var systems = require('./routes/systems');
-var quotas = require('./routes/quotas');
 var apiQuota = require('./api/quota');
-var apiSystem = require('./api/system');
 
 var app = express();
 
@@ -31,7 +28,7 @@ app.use(passport.session());
 
 var auth = function(req, res, next) { 
     if (!req.isAuthenticated()) { 
-        res.redirect("/signin");
+        res.redirect("/sign/in");
     } else {
         next();
     } 
@@ -42,12 +39,9 @@ app.get('*', function(req, res, next) {
   next();
 });
 
-app.use('/', routes);
-app.use('/sign', sign);
-app.use('/systems', auth, systems);
-app.use('/quotas', auth, quotas);
 app.use('/api/quota', auth, apiQuota);
-app.use('/api/system', auth, apiSystem);
+app.use('/sign', sign);
+app.use('/', routes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -1,23 +1,26 @@
 extends layout
 
-block content
-    div#app                       
-    
-block scripts
-    script#layoutTemplate(type="text/html")
-        
-        nav.navbar.navbar-default.navbar-fixed-top
-            div.container
-                div.navbar-header
-                    a.navbar-brand(href="/") Kwota
-                div.navbar-collapse.collapse
-                    ul.nav.navbar-nav.navbar-right
-                        li
-                            a(href="/sign/out") Sign out
+block links
+    link(rel='stylesheet', href='/css/index.css')    
 
-        div.content                                                                
-            div.row                                
-                div.col-md-12#view
-                
-    script(src='/js/kwota.js')    
+block content
+    nav.navbar.navbar-default.navbar-fixed-top
+        div.container
+            div.navbar-header
+                a.navbar-brand(href="/") Kwota
+            div.navbar-collapse.collapse
+                ul.nav.navbar-nav.navbar-right
+                    li
+                        a(href="/sign/out") Sign out
+                        
+    div.content                                                                
+        div.row                                
+            div.col-md-12(data-bind="template: { name: viewName, data: viewModel }")
+                                    
+block scripts
+    script#loadingView(type="text/html")
+        p loading...
+        
+    script(src='/js/kwota.js')         
+    script(src='/js/vm.js')                                            
     script(src='/js/app.js')

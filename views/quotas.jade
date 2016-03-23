@@ -1,0 +1,35 @@
+script#quotasView(type="text/html")
+    button.btn.btn-primary.pull-right(data-bind="click: newQuota") New Quota
+    h1.page-header My Quotas
+    div(data-bind="with: openQuotas")
+        div.panel.panel-default
+            div.panel-heading Open Quotas
+            div(data-bind="foreach: $parent.openQuotas")
+                div.list-group-item
+                    p
+                        | I will 
+                        span(data-bind="text: action")
+                        |  at least 
+                        span(data-bind="text: instances") 
+                        |  time(s) per week             
+                    p
+                        span(data-bind="foreach: filledInstance")
+                            span.glyphicon.glyphicon-check
+                        span(data-bind="foreach: unfilledInstance")
+                            a(href="##" data-bind="click: fill")
+                                span.glyphicon.glyphicon-unchecked                                
+                                     
+    div(data-bind="with: filledQuotas")                            
+        div.panel.panel-success
+            div.panel-heading Filled Quotas
+            div(data-bind="foreach: $parent.filledQuotas")
+                div.list-group-item
+                    p
+                        | I will 
+                        span(data-bind="text: action")
+                        |  at least 
+                        span(data-bind="text: instances") 
+                        |  time(s) per week           
+                    p
+                        span(data-bind="foreach: filledInstance")
+                            span.glyphicon.glyphicon-check                                 

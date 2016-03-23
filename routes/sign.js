@@ -26,9 +26,9 @@ router.post("/up", function (req, res, next) {
         if (err) {
             return res.render('sign/up', { error: err.message});            
         }        
-        
-        passport.authenticate('local')(req, res, function () {
-          res.redirect('/');
+                                
+        passport.authenticate('local')(req, res, function () {                               
+            res.redirect('/');
         });        
     });
 });

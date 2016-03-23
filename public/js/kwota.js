@@ -1,5 +1,5 @@
 var kwota = (function () {                
-        
+                           
     function loadView(view, views, done) {
         $.ajax({
             type: "GET",
@@ -23,13 +23,11 @@ var kwota = (function () {
         var view = views.shift();
         loadView(view, views, done);
     };    
-    
-    var router = new kendo.Router();
-    
+        
     return {
         loadModules: loadModules,
-        router: router,
-        viewModels: {}            
+        nav: {},
+        vm: {}            
     };
         
 })();

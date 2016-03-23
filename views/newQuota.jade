@@ -1,0 +1,11 @@
+script#newQuotaView(type="text/html")
+    h1 New Quota
+    form(data-bind="submit: create")
+        div.form-group
+            label I will
+            textarea.form-control.kw-input(data-bind="value: action", autofocus) 
+        div.form-group
+            label at least
+            input.form-control.kw-input(data-bind="value: instances" type="number" min="1" max="100")
+            strong time(s) per week        
+        button.btn.btn-primary(type="submit") Create
