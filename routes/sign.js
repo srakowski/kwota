@@ -8,7 +8,7 @@ router.get("/up", function (req, res, next) {
     if (req.isAuthenticated()) {
         return res.redirect("/");
     }
-        
+            
     res.render('sign/up');        
 });
 

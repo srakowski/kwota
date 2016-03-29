@@ -1,0 +1,26 @@
+body {
+    background-color: #FAFAFA;
+    color: #555;    
+    font-family: 'Open Sans', sans-serif;
+    padding-top: 50px;
+}
+
+.content {
+    padding: 12px 0px;   
+}
+
+.kw-checked {
+    font-size: 24px;
+    margin-right: 6px;
+}
+
+.kw-unchecked {
+    font-size: 24px;
+    margin-right: 6px;
+    color: grey;   
+}
+
+.kw-quota {
+    font-size: 18px;
+}
+

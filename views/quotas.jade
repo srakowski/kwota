@@ -1,35 +1,47 @@
-script#quotasView(type="text/html")
-    button.btn.btn-primary.pull-right(data-bind="click: newQuota") New Quota
-    h1.page-header My Quotas
-    div(data-bind="with: openQuotas")
-        div.panel.panel-default
-            div.panel-heading Open Quotas
-            div(data-bind="foreach: $parent.openQuotas")
-                div.list-group-item
-                    p
-                        | I will 
-                        span(data-bind="text: action")
-                        |  at least 
-                        span(data-bind="text: instances") 
-                        |  time(s) per week             
-                    p
-                        span(data-bind="foreach: filledInstance")
-                            span.glyphicon.glyphicon-check
-                        span(data-bind="foreach: unfilledInstance")
-                            a(href="##" data-bind="click: fill")
-                                span.glyphicon.glyphicon-unchecked                                
-                                     
-    div(data-bind="with: filledQuotas")                            
-        div.panel.panel-success
-            div.panel-heading Filled Quotas
-            div(data-bind="foreach: $parent.filledQuotas")
-                div.list-group-item
-                    p
-                        | I will 
-                        span(data-bind="text: action")
-                        |  at least 
-                        span(data-bind="text: instances") 
-                        |  time(s) per week           
-                    p
-                        span(data-bind="foreach: filledInstance")
-                            span.glyphicon.glyphicon-check                                 
+extends layoutEx
+
+block view
+    div(data-bind="if: hasQuotas, visible: true", style="display: none;").col-md-12
+        h1.page-header My Quotas
+        div(data-bind="with: openQuotas")
+            div.panel.panel-default
+                div.panel-heading Open Quotas
+                div(data-bind="foreach: $parent.openQuotas")
+                    div.list-group-item.kw-quota
+                        p
+                            | I will 
+                            span(data-bind="text: action")
+                            |  at least 
+                            span(data-bind="text: instances") 
+                            |  time(s) per week             
+                        p
+                            span(data-bind="foreach: filledInstance")
+                                span.glyphicon.glyphicon-check.kw-checked.text-success
+                            span(data-bind="foreach: unfilledInstance")
+                                a(href="##" data-bind="click: fill")
+                                    span.glyphicon.glyphicon-unchecked.kw-unchecked                                
+                                        
+        div(data-bind="with: filledQuotas")                            
+            div.panel.panel-success
+                div.panel-heading Filled Quotas
+                div(data-bind="foreach: $parent.filledQuotas")
+                    div.list-group-item.kw-quota
+                        p.pull-right
+                            a(href="##")(data-bind="click: reset")
+                                span.glyphicon.glyphicon-repeat.kw-unchecked                                            
+                        p
+                            | I will 
+                            span(data-bind="text: action")
+                            |  at least 
+                            span(data-bind="text: instances") 
+                            |  time(s) per week           
+                        p
+                            span(data-bind="foreach: filledInstance")
+                                span.glyphicon.glyphicon-check.kw-checked.text-success                                                                
+                        
+    div(data-bind="ifnot: hasQuotas, visible: true", style="display: none;").col-md-12
+        h1 Welcome to Kwota
+        button.btn.btn-primary(data-bind="click: newQuota") Get Started
+    
+block scripts
+    script(src='/js/quotas.js')      

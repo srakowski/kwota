@@ -1,17 +1,22 @@
 var express = require('express');
 var passport = require('passport');
+
 var router = express.Router();
 
 router.get('/', function(req, res, next) {
-    if (req.isAuthenticated()) {
-        res.render('app');
+    if (req.isAuthenticated()) {                                
+        res.render('quotas');
     } else {
         res.render('index');
     }
 });
 
-router.get('/views/:name', function (req, res, next) {
-    res.render(req.params.name);    
+router.get('/new', function (req, res, next) {
+    if (!req.isAuthenticated()) {
+        return res.redirect('/sign/in');
+    }    
+    
+    res.render('newQuota');
 });
 
 module.exports = router;
