@@ -1,12 +1,12 @@
 body {
     background-color: #FAFAFA;
     color: #555;    
-    font-family: 'Open Sans', sans-serif;
-    padding-top: 50px;
+    font-family: 'Open Sans', sans-serif;    
 }
 
 .content {
     padding: 12px 0px;   
+    padding-top: 10px;    
 }
 
 .kw-checked {

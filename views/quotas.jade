@@ -2,44 +2,63 @@ extends layoutEx
 
 block view
     div(data-bind="if: hasQuotas, visible: true", style="display: none;").col-md-12
-        h1.page-header My Quotas
-        div(data-bind="with: openQuotas")
-            div.panel.panel-default
-                div.panel-heading Open Quotas
-                div(data-bind="foreach: $parent.openQuotas")
-                    div.list-group-item.kw-quota
+        div.row
+            div(data-bind="visible: openQuotas().length > 0").col-md-6
+                div.panel.panel-default
+                    div.panel-heading Open Quotas
+                    div(data-bind="foreach: openQuotas")
+                        div.list-group-item.kw-quota
+                            p
+                                | I will 
+                                span(data-bind="text: action")
+                                |  at least 
+                                span(data-bind="text: instances") 
+                                |  time(s) per week             
+                            p
+                                span(data-bind="foreach: filledInstance")
+                                    span.glyphicon.glyphicon-check.kw-checked.text-success
+                                span(data-bind="foreach: unfilledInstance")
+                                    a(href="##" data-bind="click: fill")
+                                        span.glyphicon.glyphicon-unchecked.kw-unchecked
+            div(data-bind="visible: openQuotas().length == 0").col-md-6
+                div.panel.panel-default
+                    div.panel-heading Open Quotas
+                    div.panel-body
+                        h2 Congratulations!!!
+                        p You've successfully filled all your quotas for the week.
+                        p First, treat yourself to something nice. Afterall, you've earned it!
+                        p When you are done celebrating your success, click the reset button below to get things ready for next week. 
                         p
-                            | I will 
-                            span(data-bind="text: action")
-                            |  at least 
-                            span(data-bind="text: instances") 
-                            |  time(s) per week             
-                        p
-                            span(data-bind="foreach: filledInstance")
-                                span.glyphicon.glyphicon-check.kw-checked.text-success
-                            span(data-bind="foreach: unfilledInstance")
-                                a(href="##" data-bind="click: fill")
-                                    span.glyphicon.glyphicon-unchecked.kw-unchecked                                
-                                        
-        div(data-bind="with: filledQuotas")                            
-            div.panel.panel-success
-                div.panel-heading Filled Quotas
-                div(data-bind="foreach: $parent.filledQuotas")
-                    div.list-group-item.kw-quota
-                        p.pull-right
-                            a(href="##", data-bind="click: reset")
-                                span.glyphicon.glyphicon-repeat.kw-unchecked                                            
-                        p
-                            | I will 
-                            span(data-bind="text: action")
-                            |  at least 
-                            span(data-bind="text: instances") 
-                            |  time(s) per week           
-                        p
-                            span(data-bind="foreach: filledInstance")
-                                span.glyphicon.glyphicon-check.kw-checked.text-success                                                                
+                            button.btn.btn-success(data-bind="click: resetAll")
+                                span.glyphicon.glyphicon-repeat
+                                |  Reset All                                                          
+                                            
+            div(data-bind="visible: filledQuotas().length > 0").col-md-6                     
+                div.panel.panel-success
+                    div.panel-heading Filled Quotas
+                    div(data-bind="foreach: filledQuotas")
+                        div.list-group-item.kw-quota
+                            p.pull-right
+                                a(href="##", data-bind="click: reset")
+                                    span.glyphicon.glyphicon-repeat.kw-unchecked                                            
+                            p
+                                | I will 
+                                span(data-bind="text: action")
+                                |  at least 
+                                span(data-bind="text: instances") 
+                                |  time(s) per week           
+                            p
+                                span(data-bind="foreach: filledInstance")
+                                    span.glyphicon.glyphicon-check.kw-checked.text-success                                                                
+            div(data-bind="visible: filledQuotas().length == 0").col-md-6                     
+                div.panel.panel-success
+                    div.panel-heading Filled Quotas
+                    div.panel-body
+                        h2 You can do it!
+                        p This is going to be a fantastic week. Get started filling those quotas today.
+
                         
-    div(data-bind="ifnot: hasQuotas, visible: true", style="display: none;").col-md-12
+    div(data-bind="if: noQuotas, visible: true", style="display: none;").col-md-12
         h1 Welcome to Kwota
         button.btn.btn-primary(data-bind="click: newQuota") Get Started
     

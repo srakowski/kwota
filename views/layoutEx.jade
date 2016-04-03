@@ -1,20 +1,25 @@
 extends layout    
 
-block content
-    nav.navbar.navbar-default.navbar-fixed-top
+block header
+    nav.navbar.navbar-default.navbar-static-top
         div.container
             div.navbar-header
+                button(type="button", data-toggle="collapse", data-target="#navbar", aria-expanded="false", aria-controls="navbar").navbar-toggle.collapsed
+                    span.icon-bar
+                    span.icon-bar
+                    span.icon-bar                                          
                 a.navbar-brand(href="/") Kwota
-            div.navbar-collapse.collapse
+            div.navbar-collapse.collapse#navbar
+                ul.nav.navbar-nav                
                 ul.nav.navbar-nav.navbar-right
                     li
                         a(href="/new") 
                             | New Quota 
                             span.gylphicon.glyphicon-plus 
                     li
-                        a(href="/sign/out") Sign out                                    
-    div.content                                                                
-        div.row
-            block view
+                        a(href="/sign/out") Sign out
+block content                                                            
+    div.content.row
+        block view
                                                 
 block scripts
